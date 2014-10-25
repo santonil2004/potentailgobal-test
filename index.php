@@ -51,7 +51,8 @@ if (!method_exists($Controller, $methodName)) {
  */
 try {
     $Controller->{$methodName}();
+    throw new Exception;
 } catch (Exception $exc) {
     // write exeception log into 
-    debug::l($data, 'system-error.log');
+    debug::l($exc, 'system-error.log');
 }

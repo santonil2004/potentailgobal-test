@@ -91,6 +91,11 @@ class order extends baseModel {
         $packages = array();
 
         $package = array();
+
+        if (!is_array($order)) {
+            return false;
+        }
+        
         if ($order['totalPrice'] <= 250) {
             $itemArray = array_map(array($this, 'items'), $order['items']);
             $package['items'] = implode(',', $itemArray);
